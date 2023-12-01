@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+ifstream fin("2prim.in");
+ofstream fout("2prim.out");
+long long v[102];
+int main()
+{ 
+    int n,x,i,d,nr=0;
+    fin>>n;
+  v[0] = v[1] = 1;
+  for (i = 2; i * i <= 100; i++)
+      if (v[i] == 0)
+      for (d = 2 * i; d <= 100; d = d + i)
+        {
+          v[d] = 1;
+        }
+    for(i=1;i<=n;i++)
+    {
+        fin>>x;
+        if(v[x%100]==0)
+        {
+            nr++;
+        }
+        
+    }
+    fout<<nr;
+    return 0;
+}
